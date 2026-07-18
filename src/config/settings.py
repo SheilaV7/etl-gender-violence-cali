@@ -1,3 +1,8 @@
+"""
+Carga las variables de entorno necesarias para la configuración
+del proyecto.
+"""
+
 from dotenv import load_dotenv
 import os
 
