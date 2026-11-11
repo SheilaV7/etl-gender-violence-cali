@@ -48,8 +48,20 @@ como
 .env
 ```
 
-## 6. Ejecutar
+Completar `SUPABASE_DB_URL` en `.env` con la URL de conexión PostgreSQL de
+Supabase. No publiques ni compartas ese archivo.
+
+## 6. Ejecutar el ETL
 
 ```bash
 python src/main.py
 ```
+
+El ETL extrae y procesa los datasets y luego recrea en el esquema por defecto
+de PostgreSQL una tabla por cada salida procesada. Los tres reportes de hurtos
+se combinan en la tabla `hurto`. La carga reemplaza las tablas del ETL y sus
+datos anteriores; las tablas que no forman parte del lote no se modifican.
+Todas las tablas se actualizan en una transacción: si falla una carga, se
+revierte el lote completo. Al recrearlas, no se conservan índices, restricciones,
+políticas RLS ni permisos configurados directamente en las tablas; deben
+configurarse de nuevo si se usan.

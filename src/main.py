@@ -4,15 +4,14 @@ y guarda el resultado de cada uno.
 """
 
 from services.dataset_extractor import DatasetExtractor
+from services.data_uploader import DataUploader
 from services.preprocessor import Preprocessor
 
 
 def main():
     datasets = DatasetExtractor().extract_all()
     datasets = Preprocessor().process_all(datasets)
-
-    for name, df in datasets.items():
-        print(f"{name}: {len(df)} registros")
+    DataUploader().upload_all(datasets)
 
 
 if __name__ == "__main__":
