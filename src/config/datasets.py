@@ -87,7 +87,7 @@ DATASETS: dict[str, DatasetConfig] = {
         k_anonimidad=5,
     ),
     "presuntos_homicidios": DatasetConfig(
-        name="lesiones_no_fatales",
+        name="presuntos_homicidios",
         dataset_id="vtub-3de2",
         params={"$where": "municipio_del_hecho_dane='Cali'"},
         k_anonimidad=5,
